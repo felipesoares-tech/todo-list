@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITask } from '../interfaces/Task';
-import styles from './TaskList.module.css'
+import styles from './css/TaskList.module.css'
 
 interface IAppProps {
     taskList: ITask[]

@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
-import styles from './App.module.css'
+import styles from './components/css/App.module.css'
 import { ITask } from './interfaces/Task'
 import Modal from './components/Modal';
 
@@ -34,9 +34,21 @@ function App() {
     setTaskToUpdate(task)
   }
 
+  const updateTask = (id: number, title: string, difficulty: number) => {
+    const updatedTask: ITask = { id, title, difficulty }
+
+    const updatedItems = tasklist.map((task) => {
+      return task.id === updatedTask.id ? updatedTask : task
+    })
+
+    setTaskList(updatedItems)
+    hideOrShowModal(false)
+
+  }
+
   return (
     <div>
-      <Modal children={<TaskForm btnText='Editar Tarefa' taskList={tasklist} task={taskToUpdate} />} />
+      <Modal children={<TaskForm handleUpdate={updateTask}  btnText='Editar Tarefa' taskList={tasklist} task={taskToUpdate} />} />
       <Header />
       <main className={styles.main}>
         <div>

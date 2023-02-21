@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './Modal.module.css'
+import styles from './css/Modal.module.css'
 
 interface IAppProps {
     children: React.ReactNode
@@ -16,7 +16,7 @@ const Modal: React.FunctionComponent<IAppProps> = ({children}: IAppProps) => {
     <div id='modal' className='hide'>
         <div className={styles.fade} onClick={closeModal}></div>
         <div className={styles.modal}>
-            <h2>Texto modal</h2>
+            <h2>Editar Tarefa</h2>
             {children}
         </div>
     </div>
