@@ -4,9 +4,10 @@ import styles from './TaskList.module.css'
 
 interface IAppProps {
     taskList: ITask[]
+    handleDelete(id: number): void
 }
 
-const TaskList = ({ taskList }: IAppProps) => {
+const TaskList = ({ taskList, handleDelete }: IAppProps) => {
     return (
         <>
             {taskList.length > 0 ? (
@@ -18,7 +19,9 @@ const TaskList = ({ taskList }: IAppProps) => {
                         </div>
                         <div className={styles.actions}>
                             <i className='bi bi-pencil'></i>
-                            <i className='bi bi-trash'></i>
+                            <i className='bi bi-trash' onClick={() => {
+                                handleDelete(task.id)
+                            }}></i>
                         </div>
                     </div>
                 ))
